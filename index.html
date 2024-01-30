@@ -5,9 +5,44 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + Vue</title>
+    <style>
+
+      :root {
+        /* colors */
+        
+        --yellow: hsl(47, 88%, 63%);
+        --grey: hsl(0, 0%, 50%);
+        --black: hsl(0, 0%, 7%);
+      }
+
+      body {
+        background-color: var(--yellow);
+      }
+      
+      .reference {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.5;
+        width: 375px;
+        height: 812px;
+        background: url('./design/mobile-design.jpg');
+        pointer-events: none;
+      }
+      
+      @media only screen and (min-width: 375px) {
+        .reference {
+          width: 1440px;
+          height: 960px;
+          background: url('./design/desktop-design.jpg');
+        }
+      }
+
+    </style>
   </head>
   <body>
     <div id="app"></div>
+    <div class="reference"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
