@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/fem_blog-preview-card/assets/favicon-32x32-0IxEGFmt.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Vue</title>
+    <style>
+
+      body {
+        background-color: var(--yellow);
+      }
+      
+      .referenceMobile {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.5;
+        width: 375px;
+        height: 812px;
+        pointer-events: none;
+        visibility: visible;
+        border: 1px solid #000;
+      }
+      .referenceFull {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.5;
+        width: 1440px;
+        height: 960px;
+        pointer-events: none;
+        visibility: hidden;
+        border: 1px solid #000;
+      }
+      
+      @media only screen and (min-width: 375px) {
+        .referenceMobile {
+          visibility: hidden;
+        }
+        .referenceFull {
+          visibility: visible;
+        }
+      }
+
+    </style>
+    <script type="module" crossorigin src="/fem_blog-preview-card/assets/index-ZRKiRggN.js"></script>
+    <link rel="stylesheet" crossorigin href="/fem_blog-preview-card/assets/index-lhpaeUxN.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <!--
+      <img src="./design/mobile-design.jpg" class="referenceMobile"></div>
+      <img src="./design/desktop-design.jpg" class="referenceFull"></div>
+    -->
+  </body>
+</html>
