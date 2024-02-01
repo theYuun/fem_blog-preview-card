@@ -7,14 +7,6 @@
     <title>Vite + Vue</title>
     <style>
 
-      :root {
-        /* colors */
-        
-        --yellow: hsl(47, 88%, 63%);
-        --grey: hsl(0, 0%, 50%);
-        --black: hsl(0, 0%, 7%);
-      }
-
       body {
         background-color: var(--yellow);
       }
@@ -28,6 +20,7 @@
         height: 812px;
         pointer-events: none;
         visibility: visible;
+        border: 1px solid #000;
       }
       .referenceFull {
         position: absolute;
@@ -38,6 +31,7 @@
         height: 960px;
         pointer-events: none;
         visibility: hidden;
+        border: 1px solid #000;
       }
       
       @media only screen and (min-width: 375px) {
@@ -53,8 +47,10 @@
   </head>
   <body>
     <div id="app"></div>
-    <img src="./design/mobile-design.jpg" class="referenceMobile"></div>
-    <img src="./design/desktop-design.jpg" class="referenceFull"></div>
+    <!--
+      <img src="./design/mobile-design.jpg" class="referenceMobile"></div>
+      <img src="./design/desktop-design.jpg" class="referenceFull"></div>
+    -->
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

@@ -5,8 +5,8 @@
 
 <template>
   <div class="blogsContainer">
-    <ul>
-      <li v-for="blog in blogs">
+    <ul class="blogsContainerList">
+      <li class="blogsContainerItem" v-for="blog in blogs">
         <blogPreviewItem :blogDetails="blog" />
       </li>
     </ul>
@@ -16,13 +16,25 @@
 
 <style>
 .blogsContainer {
-  width: calc(100% - 39px);
-  height: 100vh;
   margin: 24px;
   margin-top: 155px;
-  background-color: black;
+  display: flex;
+  flex-direction: column;
 }
-.blogsContainer li {
-  list-style-type: none;
+
+.blogsContainerList {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+@media only screen and (min-width: 375px) {
+  .blogsContainer {
+    flex-direction: row;
+    margin-top: 220px;
+  }
+  .blogsContainerList {
+    margin: auto;
+  }
 }
 </style>

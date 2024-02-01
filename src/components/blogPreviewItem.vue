@@ -49,9 +49,12 @@
         return `/fem_blog-preview-card/src/assets/images/${authorImageName}/image-author.webp`;
     })
 
-    const getMonth = () => {
-        
-    }
+    const getMonth = (() => {
+        const monthFromData = props.blogDetails.date.getMonth();
+        const monthNamesShortened = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        console.log(monthFromData + ': ' + monthNamesShortened[monthFromData]);
+        return monthNamesShortened[monthFromData];
+    })
 </script>
 
 <template>
@@ -64,7 +67,7 @@
             <strong>{{ tag }}</strong>
         </li>
     </ul>
-    <div class="date"><strong>Published {{ blogDetails.date.getDate() + ' ' + blogDetails.date.getMonth() + ' ' + blogDetails.date.getFullYear() /*blogDetails.date.toLocaleDateString('en-us')*/ }}</strong></div>
+    <div class="date"><strong>Published {{ blogDetails.date.getDate() + ' ' + getMonth() + ' ' + blogDetails.date.getFullYear() /*blogDetails.date.toLocaleDateString('en-us')*/ }}</strong></div>
     <h1 class="name">{{ blogDetails.name }}</h1>
     <p class="description">{{ blogDetails.description }}</p>
     <div class="author">
@@ -81,6 +84,7 @@
     border: 1px solid var(--black);
     box-shadow: 8px 8px 0 0 var(--black);
     padding: 22px;
+    max-width: 282px;
 }
 
 .blogImage {
@@ -99,6 +103,7 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
+    flex-wrap: wrap;
 }
 .tags li {
     padding: 5px 13px;
@@ -140,5 +145,62 @@
 .author strong {
     margin: auto 0;
     height: 16px;
+}
+
+@media only screen and (min-width: 375px) {
+    
+    .blogItem {
+        max-width: 340px;
+    }
+    
+    .blogImage img {
+        margin-left: 0px;
+    }
+
+    .tags {
+        font-size: 14px;
+        letter-spacing: 0.2px;
+        margin-top: 26px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .date {
+        margin-top: 14px;
+        font-size: 14px;
+    }
+
+    .name {
+        margin-top: 18px;
+        font-size: 25px;
+        letter-spacing: -0.3px;
+    }
+
+    .description {
+        margin-top: 18px;
+        font-size: 16px;
+        letter-spacing: 0.1px;
+        line-height: 23px;
+    }
+
+    .author {
+        margin-top: 22px;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        gap: 10px;
+        font-size: 14px;
+        letter-spacing: 0.1px;
+    }
+    .author img {
+        margin: 2px;
+        width: 31px;
+    }
+    .author strong {
+        margin: auto 0;
+        height: 16px;
+    }
 }
 </style>
