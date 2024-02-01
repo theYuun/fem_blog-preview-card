@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, defineProps, computed } from 'vue';
+    import { ref, defineProps, computed, watch } from 'vue';
 
     const props = defineProps({
         blogDetails: {
@@ -30,31 +30,41 @@
         }
     })
 
+    const authorImageName = props.blogDetails.author.replace(' ', '');
+    
+    // I attempted to create a function that will return
+    // the file based on differing extensions, but the
+    // methods I found were not forthcoming.
+    // const imageExtensions = ['webp', 'jpeg', 'jpg', 'png', 'svg', 'bmp'];
+    
     // Computed refs to reactively update images when prop.blogDetails changes
     // One needs to prepend the vite.config.js > defineConfig > base
     // value to the path of a dynamic image using the
     // computed() function to make this work properly.
-    
-    const blogHeaderImagePath = computed(() => {
-        const author = props.blogDetails.author.replace(' ', '');
-        const article = props.blogDetails.id.toString();
-        return `/fem_blog-preview-card/src/assets/images/${author}/articles/${article}/image-header.svg`;
+    const blogHeaderImagePath = computed( () => {
+        const articleID = props.blogDetails.id.toString();
+        return `/fem_blog-preview-card/src/assets/images/${authorImageName}/articles/${articleID}/image-header.svg`;
     })
     const blogAuthorImagePath = computed(() => {
-        const authorImageName = props.blogDetails.author.replace(' ', '');
         return `/fem_blog-preview-card/src/assets/images/${authorImageName}/image-author.webp`;
     })
+
+    const getMonth = () => {
+        
+    }
 </script>
 
 <template>
   <div class="blogItem">
-    <img class="blogImage" :src="blogHeaderImagePath" alt="">
+    <div class="blogImage">
+        <img :src="blogHeaderImagePath" alt="">
+    </div>
     <ul class="tags">
         <li v-for="tag in blogDetails.tags">
             <strong>{{ tag }}</strong>
         </li>
     </ul>
-    <div class="date">Published {{ new Date().toLocaleDateString('en-us') /*blogDetails.date.toLocaleDateString('en-us')*/ }}</div>
+    <div class="date"><strong>Published {{ blogDetails.date.getDate() + ' ' + blogDetails.date.getMonth() + ' ' + blogDetails.date.getFullYear() /*blogDetails.date.toLocaleDateString('en-us')*/ }}</strong></div>
     <h1 class="name">{{ blogDetails.name }}</h1>
     <p class="description">{{ blogDetails.description }}</p>
     <div class="author">
@@ -65,5 +75,70 @@
 </template>
 
 <style>
+.blogItem {
+    background-color: #fff;
+    border-radius: 20px;
+    border: 1px solid var(--black);
+    box-shadow: 8px 8px 0 0 var(--black);
+    padding: 22px;
+}
 
+.blogImage {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 200px;
+}
+.blogImage img {
+    margin-left: -28px;
+    height: 202px;
+}
+
+.tags {
+    font-size: 12px;
+    margin-top: 26px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.tags li {
+    padding: 5px 13px;
+    background-color: var(--yellow);
+    border-radius: 5px;
+}
+
+.date {
+    margin-top: 14px;
+    font-size: 12px;
+}
+
+.name {
+    margin-top: 17px;
+    font-size: 20px;
+    letter-spacing: 0.1px;
+}
+
+.description {
+    margin-top: 15px;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+    line-height: 21px;
+}
+
+.author {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    gap: 10px;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+}
+.author img {
+    margin: 2px;
+    width: 31px;
+}
+.author strong {
+    margin: auto 0;
+    height: 16px;
+}
 </style>

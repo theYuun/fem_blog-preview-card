@@ -19,22 +19,33 @@
         background-color: var(--yellow);
       }
       
-      .reference {
+      .referenceMobile {
         position: absolute;
         top: 0;
         left: 0;
         opacity: 0.5;
         width: 375px;
         height: 812px;
-        background: url('./design/mobile-design.jpg');
         pointer-events: none;
+        visibility: visible;
+      }
+      .referenceFull {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.5;
+        width: 1440px;
+        height: 960px;
+        pointer-events: none;
+        visibility: hidden;
       }
       
       @media only screen and (min-width: 375px) {
-        .reference {
-          width: 1440px;
-          height: 960px;
-          background: url('./design/desktop-design.jpg');
+        .referenceMobile {
+          visibility: hidden;
+        }
+        .referenceFull {
+          visibility: visible;
         }
       }
 
@@ -42,7 +53,8 @@
   </head>
   <body>
     <div id="app"></div>
-    <div class="reference"></div>
+    <img src="./design/mobile-design.jpg" class="referenceMobile"></div>
+    <img src="./design/desktop-design.jpg" class="referenceFull"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

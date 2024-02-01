@@ -15,5 +15,14 @@
 </template>
 
 <style>
-
+.blogsContainer {
+  width: calc(100% - 39px);
+  height: 100vh;
+  margin: 24px;
+  margin-top: 155px;
+  background-color: black;
+}
+.blogsContainer li {
+  list-style-type: none;
+}
 </style>
