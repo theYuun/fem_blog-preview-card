@@ -8,9 +8,9 @@ export default defineConfig({
       output: {
         assetFileNames: ({name}) => {
           if(/\.(gif|jpe?g|png|svg|webp)$/.test(name ?? '')) {
-            return 'assets/images/[name]-[hash][extname]';
+            return 'images/[name]-[hash][extname]';
           }
-          return 'assets/[name]-[hash][extname]';
+          return 'images/[name]-[hash][extname]';
         }
       }
     }
