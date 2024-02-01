@@ -43,10 +43,10 @@
     // computed() function to make this work properly.
     const blogHeaderImagePath = computed( () => {
         const articleID = props.blogDetails.id.toString();
-        return `/fem_blog-preview-card/public/images/${authorImageName}/articles/${articleID}/image-header.svg`;
+        return new URL(`/fem_blog-preview-card/public/images/${authorImageName}/articles/${articleID}/image-header.svg`, import.meta.url).href;
     })
     const blogAuthorImagePath = computed(() => {
-        return `/fem_blog-preview-card/public/images/${authorImageName}/image-author.webp`;
+        return new URL(`/fem_blog-preview-card/public/images/${authorImageName}/image-author.webp`, import.meta.url).href;
     })
 
     const getMonth = (() => {
