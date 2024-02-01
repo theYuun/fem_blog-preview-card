@@ -62,19 +62,21 @@
 <template>
   <div class="blogItem">
     <div class="blogImage">
-        <img :src="blogHeaderImagePath" alt="">
+        <img :src="blogHeaderImagePath" alt="Blog Header Image" role="none" aria-hidden="true">
     </div>
     <ul class="tags">
-        <li v-for="tag in blogDetails.tags">
+        <li class="tagItem" :aria-label="`Article tag: ${tag}`" v-for="tag in blogDetails.tags">
             <strong>{{ tag }}</strong>
         </li>
     </ul>
-    <div class="date"><strong>Published {{ blogDetails.date.getDate() + ' ' + getMonth() + ' ' + blogDetails.date.getFullYear() /*blogDetails.date.toLocaleDateString('en-us')*/ }}</strong></div>
-    <h1 class="name">{{ blogDetails.name }}</h1>
-    <p class="description">{{ blogDetails.description }}</p>
-    <div class="author">
-        <img :src="blogAuthorImagePath" :alt="'Profile image for ' + props.blogDetails.author" >
-        <strong>{{ blogDetails.author }}</strong>
+    <div class="date">
+        <strong>Published {{ blogDetails.date.getDate() + ' ' + getMonth() + ' ' + blogDetails.date.getFullYear() }}</strong>
+    </div>
+    <h1 class="name" :aria-label="`The article name is ${blogDetails.name}`">{{ blogDetails.name }}</h1>
+    <p class="description" :aria-label="`The article describes: ${blogDetails.description}`">{{ blogDetails.description }}</p>
+    <div class="author" aria-label="Article author">
+        <img :src="blogAuthorImagePath" alt="Profile image for the author" aria-label="Profile image for the author" >
+        <strong :aria-label="`The author's name is ${props.blogDetails.author}`">{{ blogDetails.author }}</strong>
     </div>
   </div>
 </template>
@@ -114,7 +116,7 @@
 }
 
 .date {
-    margin-top: 14px;
+    margin-top: 30px;
     font-size: 12px;
 }
 

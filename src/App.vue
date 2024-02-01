@@ -4,10 +4,10 @@
 </script>
 
 <template>
-  <div class="blogsContainer">
-    <ul class="blogsContainerList">
-      <li class="blogsContainerItem" v-for="blog in blogs">
-        <blogPreviewItem :blogDetails="blog" />
+  <div class="blogsContainer" aria-label="An app that has multiple articles about web development">
+    <ul class="blogsContainerList" role="none">
+      <li class="blogsContainerItem" v-for="blog in blogs" role="none">
+        <blogPreviewItem :blogDetails="blog" aria-label="A blog article" />
       </li>
     </ul>
 

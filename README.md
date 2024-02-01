@@ -1,93 +1,113 @@
-# Frontend Mentor - Blog preview card
+# Frontend Mentor - Blog preview card solution
 
-![Design preview for the Blog preview card coding challenge](./design/desktop-preview.jpg)
+This is a solution to the [Blog preview card challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/blog-preview-card-ckPaj01IcS). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-**To do this challenge, you need a basic understanding of HTML and CSS.**
+## Overview
 
-## The challenge
+### The challenge
 
-Your challenge is to build out this blog preview card and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users should be able to:
 
 - See hover and focus states for all interactive elements on the page
 
-Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+![](./screenshot.jpg)
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+### Links
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+- Solution URL: [Github repo](https://github.com/theYuun/fem_blog-preview-card)
+- Live Site URL: [Live site](https://theyuun.github.io/fem_blog-preview-card/)
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+## My process
 
-All the required assets for this project are in the `/assets` folder. The images are already exported for the correct screen size and optimized.
+### Built with
 
-We also include variable and static font files for the required fonts for this project. You can choose to either link to Google Fonts or use the local font files to host the fonts yourself. Note that we've removed the static font files for the font weights that aren't needed for this project.
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Mobile-first workflow
+- [Vue.js](https://vuejs.org) - The Progressive JavaScript Framework
+- [Vite](https://vitejs.dev/) - Next Generation Frontent Tooling
+- [npm](npmjs.com) - The world's largest software registry
+- [INKSCAPE](https://inkscape.org/) - Draw Freely
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+### What I learned
 
-## Building your project
+What a cool project to do using Vue.js. I had a lot of fun doing it.
+That said, what an ache in the backside to get images loading on Github Pages. I went through so many solutions that phind suggested and it seems that a slight difference to the original code was what was needed.
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+Setting up the link to ensure Vue can get the proper location for the images was quite a thing.
+To think, I built a way more complex project previously that called data in from a fake server and it lined up perfectly. The project was for a job interview that I unfortunately did not get, mainly due to some missing expectations (testing components). Images are a beast of their own and to a degree I'm not sure why it's working now. I'm just relieved that it's working.
+Firstly, I had to move the files into the public folder and ensure that the reference to those files are working.
+Some of the solutions included adding a ```new URL()``` function that houses the reference which the Vite building process converts to the required reference for Github Pages can then further convert to a working link. (Example 1)
+> Sometimes it just seems that there are too many steps between the dev and the running website, but then I know too little to really comment on that.
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+I added an additional data object to check the effectivity of the dynamic nature of what I was building, putting Vue's componentized functionality to use.
+One does not simply try and make the data linkages, you aught to go through the different functions and decide whether the ```computed()``` or ```ref()``` function should be used. Thankfully phind was there to illuminate the difference.
+One does not simply ```<style scoped>``` and assume everything's going to work out fine. Rather create class names on elements and target those ```.objectListItem {}```, than a ```.object li {}```. Ensure you know what you're targeting, lest the style spill over to other elements that you did not mean to target. Not to say that more complicated selectors should never be utilized, like ```.object li:has() {}```, but be careful that future-you and others can read the stylesheet and easily get what's going on. I had some odd floxbox behaviour spilling over when I went the ```<style scoped>``` route. (Example 2)
+> I was against the complicatedness of componentized frameworks like Vue when I first tried to learn Angular, but building a Vanilla Javascript componentized app as practice made me understand and appreciate it so much more.
 
-## Deploying your project
+I'm not entirely sure whether this is the best way to tackle a new project, but ensure you have the HTML skeleton first, the JavaScript musculature second, the serving ecosystem third so you can focus your future frustrations out on the CSS fourth. This seems safe.
+> Too many times I'd see style issues in among the other steps to find that I'd lost track of what I was doing before tackling those style issues.
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+I've gotten more used to the aria attributes having installed a screen reader extention.
+I played around with this a bit and set them up to be data-driven. (Example 3)
+> Install one and have a listen to how I labelled the elements in this app.
+> A note that Screen Readers do not practice quolloque all that well. Vue.js is pronounced as 'Voo dot jay es'
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+####html
+(Example 3)
+```
+  <h1 class="name" :aria-label="`The article name is ${blogDetails.name}`">{{ blogDetails.name }}</h1>
+```
+####css
+####js
+(Example 1)
+```
+  const authorImageName = props.blogDetails.author.replace(' ', '');
+  const articleID = props.blogDetails.id.toString();
+  const blogHeaderImagePath = computed( () => {
+      return `/fem_blog-preview-card/images/${authorImageName}/articles/${articleID}/image-header.svg`;
+      // The below did not work and also required messing around in the vite.config.js file, which I'm not comfortable doing just yet
+      // return new URL(`/fem_blog-preview-card/public/images/${authorImageName}/articles/${articleID}/image-header.svg`, import.meta.url).href;
+  })
+  const blogAuthorImagePath = computed(() => {
+      return `/fem_blog-preview-card/images/${authorImageName}/image-author.webp`;
+      //return new URL(`/fem_blog-preview-card/public/images/${authorImageName}/image-author.webp`, import.meta.url).href;
+  })
+```
 
-## Create a custom `README.md`
+### Continued development
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+I'll definitely be referencing this project in the future when I need to load images from data.
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+### Useful resources
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+- [phind](https://www.phind.com/search?home=true) - phind is very useful when trying to understand not just the part you're working on but you can also, if you phrase your question well enough and add your code to the prompt, get a verbose description of surrounding information as well.
 
-## Submitting your solution
+## Author
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+- Frontend Mentor - [@theYuun](https://www.frontendmentor.io/profile/theYuun)
+- freecodecamp - [theYuun](https://www.freecodecamp.org/theYuun)
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+## Acknowledgments
 
-## Sharing your solution
-
-There are multiple places you can share your solution:
-
-1. Share your solution page in the **#finished-projects** channel of our [community](https://www.frontendmentor.io/community). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
-
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+- None other than the devs of phind, I suppose.
