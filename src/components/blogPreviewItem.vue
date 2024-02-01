@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, defineProps, computed, watch } from 'vue';
+    import { ref, defineProps, computed } from 'vue';
 
     const props = defineProps({
         blogDetails: {
@@ -30,7 +30,6 @@
         }
     })
 
-    const authorImageName = props.blogDetails.author.replace(' ', '');
     
     // I attempted to create a function that will return
     // the file based on differing extensions, but the
@@ -41,12 +40,15 @@
     // One needs to prepend the vite.config.js > defineConfig > base
     // value to the path of a dynamic image using the
     // computed() function to make this work properly.
+    const authorImageName = props.blogDetails.author.replace(' ', '');
+    const articleID = props.blogDetails.id.toString();
     const blogHeaderImagePath = computed( () => {
-        const articleID = props.blogDetails.id.toString();
-        return new URL(`/fem_blog-preview-card/public/images/${authorImageName}/articles/${articleID}/image-header.svg`, import.meta.url).href;
+        // return new URL(`/fem_blog-preview-card/public/images/${authorImageName}/articles/${articleID}/image-header.svg`, import.meta.url).href;
+        return `/images/${authorImageName}/articles/${articleID}/image-header.svg`;
     })
     const blogAuthorImagePath = computed(() => {
-        return new URL(`/fem_blog-preview-card/public/images/${authorImageName}/image-author.webp`, import.meta.url).href;
+        //return new URL(`/fem_blog-preview-card/public/images/${authorImageName}/image-author.webp`, import.meta.url).href;
+        return `/images/${authorImageName}/image-author.webp`;
     })
 
     const getMonth = (() => {
