@@ -44,11 +44,11 @@
     const articleID = props.blogDetails.id.toString();
     const blogHeaderImagePath = computed( () => {
         // return new URL(`/fem_blog-preview-card/public/images/${authorImageName}/articles/${articleID}/image-header.svg`, import.meta.url).href;
-        return `/images/${authorImageName}/articles/${articleID}/image-header.svg`;
+        return `/fem_blog-preview-card/images/${authorImageName}/articles/${articleID}/image-header.svg`;
     })
     const blogAuthorImagePath = computed(() => {
         //return new URL(`/fem_blog-preview-card/public/images/${authorImageName}/image-author.webp`, import.meta.url).href;
-        return `/images/${authorImageName}/image-author.webp`;
+        return `/fem_blog-preview-card/images/${authorImageName}/image-author.webp`;
     })
 
     const getMonth = (() => {
@@ -143,6 +143,7 @@
 .author img {
     margin: 2px;
     width: 31px;
+    border-radius: 50%;
 }
 .author strong {
     margin: auto 0;
